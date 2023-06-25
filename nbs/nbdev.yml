@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "iza"
+  site-url: "https://dsm-72.github.io/iza"
+  description: "chaos package of utilities; a nod to izalith"
+  repo-branch: main
+  repo-url: "https://github.com/dsm-72/iza"

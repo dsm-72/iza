@@ -1,0 +1,12 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 00_nbs.ipynb
+      - 01_static.ipynb
+      - 02_utils.ipynb
+      - 03_types.ipynb
+      - 04_plots.ipynb
+      - 97_rich.ipynb
+      - 98_typer.ipynb
+      - 99_commands.ipynb
