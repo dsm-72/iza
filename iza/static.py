@@ -173,10 +173,10 @@ X_PCA = f'{X_}{PCA}'
 X_PCA_HVG = f'{X_}{PCA}_{HVG}'
 
 # Layer storing PHATE embedding just in adata.obsm
-X_PHATE = f'{X_}{PHATE}_{HVG}'
+X_PHATE = f'{X_}{PHATE}'
 
 # Layer storing PHATE embedding just on HVGs in adata.obsm
-X_PHATE_HVG = f'{X_}{MAGIC}'
+X_PHATE_HVG = f'{X_}{PHATE}_{HVG}'
 
 # %% ../nbs/01_static.ipynb 27
 ADATA = 'adata'
