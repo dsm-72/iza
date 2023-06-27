@@ -4,7 +4,8 @@
 __all__ = ['Series', 'ndarray', 'NPArray', 'DataFrame', 'DataFrames', 'Numeric', 'Bool', 'Boolish', 'IndexLike', 'SeriesLike',
            'IterLike', 'GroupKey', 'PathType', 'PathLike', 'SplitTuple2', 'SplitTuple3', 'SplitAsList',
            'DatasetSplitSpec', 'SplitDataset2Idxs', 'SplitDataset3Idxs', 'SplitDataFrames2', 'SplitDataFrames3',
-           'SplitDatasets', 'ColorMap', 'TrainValidSplit', 'TrainTestSplit', 'TrainValidTestSplit']
+           'SplitDatasets', 'ColorMap', 'TreeEntryFunc', 'RichTree', 'RichText', 'RichConsole', 'RichProgress',
+           'TrainValidSplit', 'TrainTestSplit', 'TrainValidTestSplit', 'DirectoryTreeStrings']
 
 # %% ../nbs/03_types.ipynb 5
 from typing import (Tuple, Union, TypeAlias, List, Iterable, Literal, Any)
@@ -111,3 +112,37 @@ from matplotlib.colors import Colormap
 
 # %% ../nbs/03_types.ipynb 22
 ColorMap: TypeAlias = Colormap
+
+# %% ../nbs/03_types.ipynb 24
+from typing import Optional, ClassVar, TypeAlias, Callable
+from enum import StrEnum
+
+# %% ../nbs/03_types.ipynb 25
+class DirectoryTreeStrings(StrEnum):
+    SPACE : ClassVar[str] = '    '
+    BRANCH: ClassVar[str] = '│   '    
+    TEE   : ClassVar[str] = '├── '
+    LAST  : ClassVar[str] = '└── '
+
+# %% ../nbs/03_types.ipynb 26
+TreeEntryFunc: TypeAlias = Callable[
+    ['PathLike', Optional[str], Optional[str], Optional[str]], str
+]
+
+# %% ../nbs/03_types.ipynb 28
+from typing import Any, TypeAlias
+
+# %% ../nbs/03_types.ipynb 29
+try:
+    from rich.tree import Tree as TreeType
+    from rich.text import Text as TextType
+    from rich.console import Console as ConsoleType
+    from rich.progress import Progress as ProgressType
+    
+except ImportError:
+    TreeType = TextType = ConsoleType = ProgressType = Any
+
+RichTree: TypeAlias = TreeType
+RichText: TypeAlias = TextType
+RichConsole: TypeAlias = ConsoleType
+RichProgress: TypeAlias = ProgressType
