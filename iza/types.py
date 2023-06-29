@@ -18,11 +18,11 @@ import pathlib
 # %% ../nbs/03_types.ipynb 9
 try:
     import torch
-    Tensor:TypeAlias = torch.Tensor
+    Tensor: TypeAlias = torch.Tensor
     Device: TypeAlias = torch.device
 except ImportError:
     # Define a placeholder type if torch is not installed
-    Tensor = Union[Iterable[Number], Any]
+    Tensor: TypeAlias = Union[Iterable[Number], Any]
     Device: TypeAlias = Union[str, None, Any]
     pass
 

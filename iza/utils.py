@@ -1503,10 +1503,10 @@ class AdataExtractor:
     def df_emb(self):
         return self.get_df_emb()
 
-# %% ../nbs/02_utils.ipynb 85
+# %% ../nbs/02_utils.ipynb 84
 import os, yaml, datetime, logging
 
-# %% ../nbs/02_utils.ipynb 86
+# %% ../nbs/02_utils.ipynb 85
 def config_exp_logger(path):
     '''
     Arguments:
@@ -1676,7 +1676,7 @@ def find_exps(path, params):
             results.append(exp)
     return results
 
-# %% ../nbs/02_utils.ipynb 88
+# %% ../nbs/02_utils.ipynb 87
 import os, pathlib, itertools
 from pathlib import Path
 from dataclasses import dataclass, field, KW_ONLY
@@ -1684,7 +1684,7 @@ from typing import Optional, List, ClassVar, Any, TypeAlias, Union
 
 from ipos.imp import is_mod, is_var_imp, Module
 
-# %% ../nbs/02_utils.ipynb 89
+# %% ../nbs/02_utils.ipynb 88
 from iza.types import (
     PathLike, PathType,
     RichConsole, RichProgress, RichText, RichTree
@@ -1692,7 +1692,7 @@ from iza.types import (
 from .static import EXT_PY
 from .imp import RichImp
 
-# %% ../nbs/02_utils.ipynb 93
+# %% ../nbs/02_utils.ipynb 92
 @dataclass
 class ArchiveDownloader:    
     _: KW_ONLY
@@ -1821,7 +1821,7 @@ class ArchiveDownloader:
             dir = Directory(self.savedir)
             dir.print()
 
-# %% ../nbs/02_utils.ipynb 97
+# %% ../nbs/02_utils.ipynb 96
 #| eval: False
 try:
     import typer
