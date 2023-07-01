@@ -47,6 +47,7 @@ $ nbdev_pypi
 
 # publish to conda
 $ nbdev_conda --build_args '-c conda-forge'
+$ nbdev_conda --mambabuild --build_args '-c conda-forge -c dsm-72'
 ```
 
 # Usage

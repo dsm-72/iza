@@ -3,21 +3,21 @@
 # %% auto 0
 __all__ = ['DecompressFunc', 'isiter', 'allinstance', 'allsametype', 'isin', 'arein', 'str_just_alpha', 'str_just_numeric',
            'strip_punc', 'filter_kwargs_for_func', 'filter_kwargs_for_class', 'wrangle_kwargs_for_func',
-           'wrangle_kwargs_for_class', 'is_pathlib', 'is_pathlike', 'is_path', 'str_to_path', 'path_to_str',
-           'to_abs_expanded', 'sort_file_first', 'sort_directory_first', 'get_user', 'collapse_user', 'check_ext',
-           'drop_ext', 'is_tar', 'is_gz', 'is_targz', 'is_tarball', 'filter_for_gz_files', 'get_gz_files_in_dir',
-           'decompress_tarball', 'decompress_gunzip', 'undo_gz', 'RecursiveDecompressor', 'make_missing_dirs',
-           'dir_dirs', 'decompress_directory_of_gunzipped_files', 'decompress_tarball_of_gunzipped_files',
-           'stream_file', 'download_and_decompress_tarball_of_gunzipped_files', 'make_temp_file', 'urljoin', 'Slice',
-           'base_init_tree', 'rich_init_tree', 'init_tree', 'base_entry_fn', 'rich_entry_fn', 'entry_fn',
-           'walk_dir_tree', 'DirectoryTree', 'RichDirectory', 'Directory', 'is_matrix', 'undo_npmatrix', 'is_series',
-           'is_series_like', 'is_np', 'is_device', 'is_cpu', 'is_mps', 'is_tensor', 'is_torch', 'undo_sparse',
-           'to_ndarray', 'AdataExtractor', 'config_exp_logger', 'exp_log_filename', 'exp_param_filename', 'list_exps',
-           'gen_exp_name', 'load_exp_params', 'save_exp_params', 'setup_exp', 'is_config_subset', 'find_exps',
-           'ArchiveDownloader']
+           'wrangle_kwargs_for_class', 'copy_to_clipboard', 'is_pathlib', 'is_pathlike', 'is_path', 'str_to_path',
+           'path_to_str', 'to_abs_expanded', 'sort_file_first', 'sort_directory_first', 'get_user', 'collapse_user',
+           'check_ext', 'drop_ext', 'is_tar', 'is_gz', 'is_targz', 'is_tarball', 'filter_for_gz_files',
+           'get_gz_files_in_dir', 'decompress_tarball', 'decompress_gunzip', 'undo_gz', 'RecursiveDecompressor',
+           'make_missing_dirs', 'dir_dirs', 'decompress_directory_of_gunzipped_files',
+           'decompress_tarball_of_gunzipped_files', 'stream_file', 'download_and_decompress_tarball_of_gunzipped_files',
+           'make_temp_file', 'urljoin', 'Slice', 'base_init_tree', 'rich_init_tree', 'init_tree', 'base_entry_fn',
+           'rich_entry_fn', 'entry_fn', 'walk_dir_tree', 'DirectoryTree', 'RichDirectory', 'Directory', 'is_matrix',
+           'undo_npmatrix', 'is_series', 'is_series_like', 'is_np', 'is_device', 'is_cpu', 'is_mps', 'is_tensor',
+           'is_torch', 'undo_sparse', 'to_ndarray', 'AdataExtractor', 'config_exp_logger', 'exp_log_filename',
+           'exp_param_filename', 'list_exps', 'gen_exp_name', 'load_exp_params', 'save_exp_params', 'setup_exp',
+           'is_config_subset', 'find_exps', 'ArchiveDownloader']
 
 # %% ../nbs/02_utils.ipynb 5
-import inspect, string
+import os, inspect, string
 from dataclasses import dataclass, field
 
 import numpy as np, pandas as pd
@@ -89,7 +89,24 @@ def wrangle_kwargs_for_class(
     params = filter_kwargs_for_class(cls, **params)
     return params
 
-# %% ../nbs/02_utils.ipynb 12
+# %% ../nbs/02_utils.ipynb 11
+def copy_to_clipboard(text: str):
+    command = ""
+    
+    # macOS and Linux
+    if os.name == 'posix':  
+        command = 'echo "' + text + '" | pbcopy'
+    
+    # Windows
+    elif os.name == 'nt':  
+        command = 'echo ' + text + ' | clip'
+
+    else:
+        raise OSError("Unsupported operating system")
+
+    os.system(command)
+
+# %% ../nbs/02_utils.ipynb 13
 import os, sys, pwd, atexit, tempfile, inspect, pathlib
 import requests, tarfile, gzip, shutil
 from dataclasses import dataclass, field
@@ -97,7 +114,7 @@ from tqdm.auto import tqdm
 
 from typing import Optional, List, Union, Iterable, Tuple, Any, Callable
 
-# %% ../nbs/02_utils.ipynb 13
+# %% ../nbs/02_utils.ipynb 14
 from iza.static import (
     EXT_GZ, EXT_TAR, EXT_TAR_GZ,
 )
@@ -106,7 +123,7 @@ from iza.types import (
     PathType, PathLike
 )
 
-# %% ../nbs/02_utils.ipynb 15
+# %% ../nbs/02_utils.ipynb 16
 def is_pathlib(path:Any) -> bool:
     """Check if the input is a path"""
     return isinstance(path, PathType)
@@ -147,7 +164,7 @@ def sort_directory_first(path: PathType):
     return (path.is_file(), path.name.lower())
 
 
-# %% ../nbs/02_utils.ipynb 17
+# %% ../nbs/02_utils.ipynb 18
 def get_user() -> str:
     user = pwd.getpwuid(os.getuid())[0]
     return user
@@ -156,7 +173,7 @@ def collapse_user(path: str) -> str:
     _, rest = path.split(get_user())    
     return '~' + rest
 
-# %% ../nbs/02_utils.ipynb 19
+# %% ../nbs/02_utils.ipynb 20
 def check_ext(filename:str, extension:str) -> bool:
     if is_pathlib(filename):
         filename = path_to_str(filename)
@@ -177,7 +194,7 @@ def drop_ext(filename:str, extension:Optional[str]=None) -> str:
         file = filename.replace(extension, '')
     return os.path.join(os.path.dirname(filename), file)
 
-# %% ../nbs/02_utils.ipynb 20
+# %% ../nbs/02_utils.ipynb 21
 def is_tar(filename:str) -> bool:
     return check_ext(filename, EXT_TAR)
 
@@ -191,7 +208,7 @@ def is_tarball(filename:str) -> bool:
     return is_tar(filename) or is_targz(filename)
 
 
-# %% ../nbs/02_utils.ipynb 21
+# %% ../nbs/02_utils.ipynb 22
 def filter_for_gz_files(files:List[str]) -> List[str]:
     return list(filter(lambda f: is_gz(f), files))
 
@@ -205,7 +222,7 @@ def get_gz_files_in_dir(dirname:str) -> List[str]:
     gz_files = filter_for_gz_files(all_files)
     return gz_files
 
-# %% ../nbs/02_utils.ipynb 23
+# %% ../nbs/02_utils.ipynb 24
 def decompress_tarball(filename:str, remove:bool=False) -> Tuple[str, Optional[EOFError]]:
     '''
     Returns
@@ -278,7 +295,7 @@ def undo_gz(filename: str, remove:bool=False) -> str:
         filename, _ = decompress_tarball(filename, remove)
     return filename
 
-# %% ../nbs/02_utils.ipynb 24
+# %% ../nbs/02_utils.ipynb 25
 DecompressFunc = Callable[[str, bool], str]
 
 @dataclass
@@ -356,7 +373,7 @@ class RecursiveDecompressor:
             self.decrease_total()
 
 
-# %% ../nbs/02_utils.ipynb 26
+# %% ../nbs/02_utils.ipynb 27
 def make_missing_dirs(dirs:List[str]):
     if isinstance(dirs, str):
         dirs = [dirs]
@@ -373,7 +390,7 @@ def dir_dirs(dirname:str) -> List[str]:
     is_subdir = lambda e : os.path.isdir(os.path.join(dirname, e))
     return list(filter(is_subdir, entries))
 
-# %% ../nbs/02_utils.ipynb 27
+# %% ../nbs/02_utils.ipynb 28
 def decompress_directory_of_gunzipped_files(
     dirname:str, desc:Optional[str]=None, remove:Optional[bool]=False
 ) -> None:
@@ -397,7 +414,7 @@ def decompress_tarball_of_gunzipped_files(
     # NOTE: decompress all internal .gz files
     decompress_directory_of_gunzipped_files(dirname, desc, remove)
 
-# %% ../nbs/02_utils.ipynb 29
+# %% ../nbs/02_utils.ipynb 30
 def stream_file(uri:str, filename:Optional[str]=None, desc:Optional[str]=None) -> None:
     '''
     Parameters
@@ -431,7 +448,7 @@ def stream_file(uri:str, filename:Optional[str]=None, desc:Optional[str]=None) -
         for chunk in response.iter_content(chunk_size=4096):
             fout.write(chunk)
 
-# %% ../nbs/02_utils.ipynb 31
+# %% ../nbs/02_utils.ipynb 32
 def download_and_decompress_tarball_of_gunzipped_files(
     uri:str, download_dir:str=None, desc:Optional[str]=None, remove:Optional[bool]=False
 ):
@@ -451,7 +468,7 @@ def download_and_decompress_tarball_of_gunzipped_files(
     decompress_tarball_of_gunzipped_files(fullpath, desc, remove)
 
 
-# %% ../nbs/02_utils.ipynb 33
+# %% ../nbs/02_utils.ipynb 34
 def make_temp_file(**kwargs: Any) -> tempfile.NamedTemporaryFile:
     temp = tempfile.NamedTemporaryFile(**kwargs)
     @atexit.register
@@ -459,20 +476,20 @@ def make_temp_file(**kwargs: Any) -> tempfile.NamedTemporaryFile:
         temp.close()
     return temp
 
-# %% ../nbs/02_utils.ipynb 35
+# %% ../nbs/02_utils.ipynb 36
 from urllib3.util.url import parse_url
 
-# %% ../nbs/02_utils.ipynb 36
+# %% ../nbs/02_utils.ipynb 37
 def urljoin(*parts: str) -> str:
     return parse_url('/'.join(s.strip('/') for s in parts)).url
 
-# %% ../nbs/02_utils.ipynb 38
+# %% ../nbs/02_utils.ipynb 39
 from dataclasses import dataclass, field
 import numpy as np, pandas as pd
 
 from typing import List, Union, Tuple
 
-# %% ../nbs/02_utils.ipynb 41
+# %% ../nbs/02_utils.ipynb 42
 @dataclass
 class Slice:
     """A class for representing a slice and providing conversion to other formats."""
@@ -567,14 +584,14 @@ class Slice:
             return self.toslice()
         return self
 
-# %% ../nbs/02_utils.ipynb 43
+# %% ../nbs/02_utils.ipynb 44
 import os, pathlib 
 from pathlib import Path
 from dataclasses import dataclass, field, KW_ONLY
 from typing import Optional, List, ClassVar, Any, TypeAlias, Callable
 from enum import StrEnum
 
-# %% ../nbs/02_utils.ipynb 44
+# %% ../nbs/02_utils.ipynb 45
 from iza.types import (
     PathLike, PathType,
     DirectoryTreeStrings, TreeEntryFunc,
@@ -586,7 +603,7 @@ from .static import EXT_PY
 from .imp import RichImp
 from ipos.imp import is_mod, is_var_imp, Module, Imp
 
-# %% ../nbs/02_utils.ipynb 45
+# %% ../nbs/02_utils.ipynb 46
 try:    
     from rich.tree import Tree
     from rich.text import Text    
@@ -600,7 +617,7 @@ except ImportError:
     Text = None 
     Progress = None
 
-# %% ../nbs/02_utils.ipynb 49
+# %% ../nbs/02_utils.ipynb 50
 def base_init_tree(dirname: str):
     return None
 
@@ -613,7 +630,7 @@ def init_tree(dirname):
     except:
         return base_init_tree(dirname)
 
-# %% ../nbs/02_utils.ipynb 51
+# %% ../nbs/02_utils.ipynb 52
 def base_entry_fn(path:Path, prefix:str='', pointer:str='', suffix:str='') -> str:
     name = path.name
     return f'{prefix}{pointer}{name}{suffix}'
@@ -632,7 +649,7 @@ def entry_fn(path:Path, prefix:str='', pointer:str='', suffix:str='') -> str:
         return base_entry_fn(path, prefix, pointer, suffix)
 
 
-# %% ../nbs/02_utils.ipynb 53
+# %% ../nbs/02_utils.ipynb 54
 def walk_dir_tree(
     dirname: PathLike, 
     prefix: str = '',
@@ -672,7 +689,7 @@ def walk_dir_tree(
             extension = BRANCH if pointer == TEE else SPACE
             yield from walk_dir_tree(path, prefix=f'{prefix}{extension}', hidden=hidden, tree=branch, entry_fn=entry_fn)
 
-# %% ../nbs/02_utils.ipynb 55
+# %% ../nbs/02_utils.ipynb 56
 @dataclass
 class DirectoryTree:
     dirname: str
@@ -712,7 +729,7 @@ class DirectoryTree:
         tree_str = self.make_tree_str()        
         return tree_str  
 
-# %% ../nbs/02_utils.ipynb 56
+# %% ../nbs/02_utils.ipynb 57
 @dataclass
 class RichDirectory(DirectoryTree):
     _: KW_ONLY
@@ -729,22 +746,22 @@ class RichDirectory(DirectoryTree):
         lines = self.get_tree_lines()
         self.console.print(self.tree)
 
-# %% ../nbs/02_utils.ipynb 57
+# %% ../nbs/02_utils.ipynb 58
 @dataclass
 class Directory(DirectoryTree):
     dirname: PathLike
     pass
 
-# %% ../nbs/02_utils.ipynb 59
+# %% ../nbs/02_utils.ipynb 60
 import os
 from pathlib import Path
 from dataclasses import dataclass, field, KW_ONLY
 from typing import Optional, List, ClassVar
 
-# %% ../nbs/02_utils.ipynb 61
+# %% ../nbs/02_utils.ipynb 62
 import pandas as pd
 
-# %% ../nbs/02_utils.ipynb 62
+# %% ../nbs/02_utils.ipynb 63
 from iza.static import (
     ADATA, MATRIX, BARCODES, FEATURES, EXT_H5, EXT_MTX, EXT_TSV,
     GENE_SYMBOL, ENSEMBL_ID
@@ -754,7 +771,7 @@ from iza.types import (
 )
 from tqdm.auto import tqdm
 
-# %% ../nbs/02_utils.ipynb 63
+# %% ../nbs/02_utils.ipynb 64
 try: 
     import scanpy as sc, scprep
 
@@ -877,15 +894,15 @@ except ImportError as err:
         
     pass
 
-# %% ../nbs/02_utils.ipynb 65
+# %% ../nbs/02_utils.ipynb 66
 import os
 import numpy as np, pandas as pd
 from typing import Optional, List, ClassVar, Any
 
-# %% ../nbs/02_utils.ipynb 66
+# %% ../nbs/02_utils.ipynb 67
 from .types import Tensor, Device, SeriesLike, ndarray
 
-# %% ../nbs/02_utils.ipynb 69
+# %% ../nbs/02_utils.ipynb 70
 def is_matrix(arr: SeriesLike) -> bool:
     '''
     Checks whether or not `arr` is a np.matrix
@@ -973,7 +990,7 @@ def is_np(arr_q: SeriesLike) -> bool:
     return isinstance(arr_q, ndarray)
 
 
-# %% ../nbs/02_utils.ipynb 70
+# %% ../nbs/02_utils.ipynb 71
 def is_device(device_q: Device) -> bool:
     '''
     Checks whether or not `device_q` is a valid
@@ -1068,7 +1085,7 @@ def is_torch(tensor_q: SeriesLike) -> bool:
     '''
     return is_tensor(tensor_q)
 
-# %% ../nbs/02_utils.ipynb 71
+# %% ../nbs/02_utils.ipynb 72
 def undo_sparse(arr: SeriesLike) -> SeriesLike:  
     '''
     Given a arr tries to make it a dense array
@@ -1103,17 +1120,17 @@ def to_ndarray(arr):
 
     return arr
 
-# %% ../nbs/02_utils.ipynb 73
+# %% ../nbs/02_utils.ipynb 74
 import os, random
 import numpy as np
 
 from dataclasses import dataclass, field, KW_ONLY
 from typing import Optional, List, ClassVar, Any
 
-# %% ../nbs/02_utils.ipynb 74
+# %% ../nbs/02_utils.ipynb 75
 from .types import Tensor, Device, SeriesLike, ndarray
 
-# %% ../nbs/02_utils.ipynb 76
+# %% ../nbs/02_utils.ipynb 77
 try:
     import torch
     def ensure_device(device: Device) -> Device:
@@ -1391,7 +1408,7 @@ except ImportError as err:
 
 
 
-# %% ../nbs/02_utils.ipynb 77
+# %% ../nbs/02_utils.ipynb 78
 try:
     import torch, pytorch_lightning as pl
     def set_seeds(seed: int) -> None:
@@ -1411,17 +1428,17 @@ except ImportError as err:
          random.seed(seed)
          np.random.seed(seed)
 
-# %% ../nbs/02_utils.ipynb 79
+# %% ../nbs/02_utils.ipynb 80
 from dataclasses import dataclass, field
 import numpy as np, pandas as pd
 
 from typing import List, Any, Optional
 
-# %% ../nbs/02_utils.ipynb 80
+# %% ../nbs/02_utils.ipynb 81
 from .types import AnnData, ndarray, DataFrame
 from .static import X_MAGIC, PHATE, X_PHATE
 
-# %% ../nbs/02_utils.ipynb 82
+# %% ../nbs/02_utils.ipynb 83
 @dataclass
 class AdataExtractor:
     adata: AnnData
@@ -1503,10 +1520,10 @@ class AdataExtractor:
     def df_emb(self):
         return self.get_df_emb()
 
-# %% ../nbs/02_utils.ipynb 84
+# %% ../nbs/02_utils.ipynb 85
 import os, yaml, datetime, logging
 
-# %% ../nbs/02_utils.ipynb 85
+# %% ../nbs/02_utils.ipynb 86
 def config_exp_logger(path):
     '''
     Arguments:
@@ -1676,7 +1693,7 @@ def find_exps(path, params):
             results.append(exp)
     return results
 
-# %% ../nbs/02_utils.ipynb 87
+# %% ../nbs/02_utils.ipynb 88
 import os, pathlib, itertools
 from pathlib import Path
 from dataclasses import dataclass, field, KW_ONLY
@@ -1684,7 +1701,7 @@ from typing import Optional, List, ClassVar, Any, TypeAlias, Union
 
 from ipos.imp import is_mod, is_var_imp, Module
 
-# %% ../nbs/02_utils.ipynb 88
+# %% ../nbs/02_utils.ipynb 89
 from iza.types import (
     PathLike, PathType,
     RichConsole, RichProgress, RichText, RichTree
@@ -1692,7 +1709,7 @@ from iza.types import (
 from .static import EXT_PY
 from .imp import RichImp
 
-# %% ../nbs/02_utils.ipynb 92
+# %% ../nbs/02_utils.ipynb 93
 @dataclass
 class ArchiveDownloader:    
     _: KW_ONLY
@@ -1821,7 +1838,7 @@ class ArchiveDownloader:
             dir = Directory(self.savedir)
             dir.print()
 
-# %% ../nbs/02_utils.ipynb 96
+# %% ../nbs/02_utils.ipynb 97
 #| eval: False
 try:
     import typer
