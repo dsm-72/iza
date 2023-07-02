@@ -1,0 +1,317 @@
+[
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "utils",
+    "section": "",
+    "text": "This notebook was generated from _00_utils.ipynb)\n\n\n\n\nsource\n\n\n\n\n arein (vals:Iterable, refs:Iterable)\n\n\nsource\n\n\n\n\n isin (val:Any, vals:Iterable)\n\n\nsource\n\n\n\n\n allsametype (vals:Any)\n\n\nsource\n\n\n\n\n allinstance (vals:Any, dtype:Union[Type,TypeAlias]=typing.Any)\n\n\nsource\n\n\n\n\n isiter (val:Any)\n\n\nsource\n\n\n\n\n str_part_end (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_part_mid (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_part_pre (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_split_get (s:str, sep:str='_', idx:int=0)\n\n\nsource\n\n\n\n\n strip_punc (s:str)\n\n\nsource\n\n\n\n\n str_just_numeric (s:str)\n\nFilters a string for just numeric values\n\nsource\n\n\n\n\n str_just_alpha (s:str)\n\nFilters a string for just alpha values\n\n\n\n\nsource\n\n\n\n\n get_func_params (fn:Callable, drop_self:Optional[bool]=True,\n                  drop_before:Optional[int]=0,\n                  drop_idxs:Optional[List[int]]=[],\n                  drop_names:Optional[List[str]]=[],\n                  drop_after:Optional[int]=None)\n\n\nsource\n\n\n\n\n wrangle_kwargs_for_class (cls:Callable, defaults:Optional[dict]=None,\n                           **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n wrangle_kwargs_for_func (fn:Callable, defaults:Optional[dict]=None,\n                          **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n filter_kwargs_for_class (cls:Callable, **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n filter_kwargs_for_func (fn:Callable, **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n copy_to_clipboard (text:str)"
+  },
+  {
+    "objectID": "utils.html#utils",
+    "href": "utils.html#utils",
+    "title": "utils",
+    "section": "",
+    "text": "This notebook was generated from _00_utils.ipynb)\n\n\n\n\nsource\n\n\n\n\n arein (vals:Iterable, refs:Iterable)\n\n\nsource\n\n\n\n\n isin (val:Any, vals:Iterable)\n\n\nsource\n\n\n\n\n allsametype (vals:Any)\n\n\nsource\n\n\n\n\n allinstance (vals:Any, dtype:Union[Type,TypeAlias]=typing.Any)\n\n\nsource\n\n\n\n\n isiter (val:Any)\n\n\nsource\n\n\n\n\n str_part_end (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_part_mid (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_part_pre (s:str, sep:Optional[str]=' ')\n\n\nsource\n\n\n\n\n str_split_get (s:str, sep:str='_', idx:int=0)\n\n\nsource\n\n\n\n\n strip_punc (s:str)\n\n\nsource\n\n\n\n\n str_just_numeric (s:str)\n\nFilters a string for just numeric values\n\nsource\n\n\n\n\n str_just_alpha (s:str)\n\nFilters a string for just alpha values\n\n\n\n\nsource\n\n\n\n\n get_func_params (fn:Callable, drop_self:Optional[bool]=True,\n                  drop_before:Optional[int]=0,\n                  drop_idxs:Optional[List[int]]=[],\n                  drop_names:Optional[List[str]]=[],\n                  drop_after:Optional[int]=None)\n\n\nsource\n\n\n\n\n wrangle_kwargs_for_class (cls:Callable, defaults:Optional[dict]=None,\n                           **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n wrangle_kwargs_for_func (fn:Callable, defaults:Optional[dict]=None,\n                          **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n filter_kwargs_for_class (cls:Callable, **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n filter_kwargs_for_func (fn:Callable, **kwargs:Optional[dict])\n\n\nsource\n\n\n\n\n copy_to_clipboard (text:str)"
+  },
+  {
+    "objectID": "utils.html#files",
+    "href": "utils.html#files",
+    "title": "utils",
+    "section": "Files",
+    "text": "Files\n\nThis notebook was generated from _01_files.ipynb)\n\n\nPathLib Interoperabliilty\n\nsource\n\n\nsort_directory_first\n\n sort_directory_first (path:Union[pathlib.Path,pathlib.PosixPath])\n\n\nsource\n\n\nsort_file_first\n\n sort_file_first (path:Union[pathlib.Path,pathlib.PosixPath])\n\n\nsource\n\n\nto_abs_expanded\n\n to_abs_expanded\n                  (dirname:Union[str,pathlib.Path,pathlib.PosixPath,NoneTy\n                  pe]=None)\n\n\nsource\n\n\npath_to_str\n\n path_to_str (path:Union[pathlib.Path,pathlib.PosixPath])\n\nConvert a pathlib.Path object to a string\n\nsource\n\n\nstr_to_path\n\n str_to_path (path:str)\n\nConvert a string to a pathlib.Path object\n\nsource\n\n\nis_path\n\n is_path (path:Any, existance:Optional[bool])\n\nCheck if the input is a path\n\nsource\n\n\nis_pathlike\n\n is_pathlike (path:Any)\n\nCheck if the input is a path\n\nsource\n\n\nis_pathlib\n\n is_pathlib (path:Any)\n\nCheck if the input is a path\n\n\nUser Utils\n\nsource\n\n\ncollapse_user\n\n collapse_user (path:str)\n\n\nsource\n\n\nget_user\n\n get_user ()\n\n\n\nExtensions\n\nsource\n\n\ndrop_ext\n\n drop_ext (filename:str, extension:Optional[str]=None)\n\n\nsource\n\n\ncheck_ext\n\n check_ext (filename:str, extension:str)\n\n\nsource\n\n\nis_tarball\n\n is_tarball (filename:str)\n\n\nsource\n\n\nis_targz\n\n is_targz (filename:str)\n\n\nsource\n\n\nis_gz\n\n is_gz (filename:str)\n\n\nsource\n\n\nis_tar\n\n is_tar (filename:str)\n\n\nsource\n\n\nget_gz_files_in_dir\n\n get_gz_files_in_dir (dirname:str)\n\n\nsource\n\n\nfilter_for_gz_files\n\n filter_for_gz_files (files:List[str])\n\n\n\nDecompression\n\nsource\n\n\nundo_gz\n\n undo_gz (filename:str, remove:bool=False)\n\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Notes\n  else: warn(msg)\n\nsource\n\n\ndecompress_gunzip\n\n decompress_gunzip (filename:str, remove:bool=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nfilename\nstr\n\n\n\n\nremove\nbool\nFalse\n\n\n\nReturns\nTuple\n\nThe name of the decompressed file e.g. ~/Downloads/fluentbio.tsv.gz wouldyield ~/Downloads/fluentbio.tsv\n\n\n\n\nsource\n\n\ndecompress_tarball\n\n decompress_tarball (filename:str, remove:bool=False)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nfilename\nstr\n\n\n\n\nremove\nbool\nFalse\n\n\n\nReturns\nTuple\n\nThe name of the archive e.g. ~/Downloads/fluentbio.tar.gz wouldyield ~/Downloads/fluentbio\n\n\n\n\nsource\n\n\nRecursiveDecompressor\n\n RecursiveDecompressor (dirname:Union[pathlib.Path,pathlib.PosixPath],\n                        entries:Optional[List[str]]=&lt;factory&gt;, strategy:Op\n                        tional[Callable[[str,bool],str]]=&lt;function\n                        undo_gz&gt;, remove:Optional[bool]=True,\n                        progress:Optional[Any]=None)\n\n\n\nDirectories\n\nsource\n\n\ndir_dirs\n\n dir_dirs (dirname:str)\n\n\nsource\n\n\nmake_missing_dirs\n\n make_missing_dirs (dirs:List[str])\n\n\nsource\n\n\ndecompress_tarball_of_gunzipped_files\n\n decompress_tarball_of_gunzipped_files (filename:str,\n                                        desc:Optional[str]=None,\n                                        remove:Optional[bool]=False)\n\n\nsource\n\n\ndecompress_directory_of_gunzipped_files\n\n decompress_directory_of_gunzipped_files (dirname:str,\n                                          desc:Optional[str]=None,\n                                          remove:Optional[bool]=False)\n\n\n\nStreaming\n\nsource\n\n\nstream_file\n\n stream_file (uri:str, filename:Optional[str]=None,\n              desc:Optional[str]=None)\n\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nuri\nstr\n\nThe URI to download\n\n\nfilename\nOptional\nNone\nThe fullpath name of the file to download. Defaults to ~/Downloads/os.path.basename(uri).\n\n\ndesc\nOptional\nNone\nThe description of the tqdm progress bar. Defaults to os.path.basename(uri).\n\n\nReturns\nNone\n\n\n\n\n\n\n\nDownloads\n\nsource\n\n\ndownload_and_decompress_tarball_of_gunzipped_files\n\n download_and_decompress_tarball_of_gunzipped_files (uri:str,\n                                                     download_dir:str=None\n                                                     , desc:Optional[str]=\n                                                     None, remove:Optional\n                                                     [bool]=False)\n\n\n\nTemporary Files\n\nsource\n\n\nmake_temp_file\n\n make_temp_file (**kwargs:Any)\n\n\n\nURLs\n\nsource\n\n\nurljoin\n\n urljoin (*parts:str)"
+  },
+  {
+    "objectID": "utils.html#slice",
+    "href": "utils.html#slice",
+    "title": "utils",
+    "section": "Slice",
+    "text": "Slice\n\nThis notebook was generated from _02_slice.ipynb)\n\n\nSlice\nHelps convert slices to its numeric values\n\nsource\n\n\nSlice\n\n Slice (slc:slice=&lt;factory&gt;)\n\nA class for representing a slice and providing conversion to other formats."
+  },
+  {
+    "objectID": "utils.html#director",
+    "href": "utils.html#director",
+    "title": "utils",
+    "section": "Director",
+    "text": "Director\n\nThis notebook was generated from _03_directory.ipynb)\n\n\nDirectory Viewer\n\nDefault Functions\n\nInit Tree\n\nsource\n\n\n\n\ninit_tree\n\n init_tree (dirname)\n\n\nsource\n\n\nrich_init_tree\n\n rich_init_tree (dirname)\n\n\nsource\n\n\nbase_init_tree\n\n base_init_tree (dirname:str)\n\n\nWalked Entry to Str\n\nsource\n\n\n\nentry_fn\n\n entry_fn (path:pathlib.Path, prefix:str='', pointer:str='',\n           suffix:str='')\n\n\nsource\n\n\nrich_entry_fn\n\n rich_entry_fn (path:pathlib.Path, prefix:str='', pointer:str='',\n                suffix:str='')\n\n\nsource\n\n\nbase_entry_fn\n\n base_entry_fn (path:pathlib.Path, prefix:str='', pointer:str='',\n                suffix:str='')\n\n\nWalk Function\n\nsource\n\n\n\nwalk_dir_tree\n\n walk_dir_tree (dirname:Union[str,pathlib.Path,pathlib.PosixPath],\n                prefix:str='', hidden:Optional[bool]=False,\n                tree:Optional[rich.tree.Tree]=None, entry_fn:Callable[[For\n                wardRef('PathLike'),Optional[str],Optional[str],Optional[s\n                tr]],str]=&lt;function entry_fn&gt;)\n\nA recursive generator, given a directory Path object will yield a visual tree structure line by line with each line prefixed by the same characters Notes —– Adapted from https://stackoverflow.com/a/59109706/5623899\n\nDirectoryTree\nwalks through directory\n\nsource\n\n\n\nDirectoryTree\n\n DirectoryTree (dirname:str, hidden:Optional[bool]=False, entry_fn:Optiona\n                l[Callable[[ForwardRef('PathLike'),Optional[str],Optional[\n                str],Optional[str]],str]]=&lt;function entry_fn&gt;)\n\n\nsource\n\n\nRichDirectory\n\n RichDirectory (dirname:str, hidden:Optional[bool]=False, entry_fn:Optiona\n                l[Callable[[ForwardRef('PathLike'),Optional[str],Optional[\n                str],Optional[str]],str]]=&lt;function entry_fn&gt;,\n                console:Optional[rich.console.Console]=&lt;factory&gt;)\n\n\nsource\n\n\nDirectory\n\n Directory (dirname:Union[str,pathlib.Path,pathlib.PosixPath],\n            hidden:Optional[bool]=False, entry_fn:Optional[Callable[[Forwa\n            rdRef('PathLike'),Optional[str],Optional[str],Optional[str]],s\n            tr]]=&lt;function entry_fn&gt;)"
+  },
+  {
+    "objectID": "utils.html#filter-matrix-director",
+    "href": "utils.html#filter-matrix-director",
+    "title": "utils",
+    "section": "Filter matrix director",
+    "text": "Filter matrix director\n\nThis notebook was generated from _04_filter_matrix_directory.ipynb)\n\n\nFilter Matrix Directory Viewer"
+  },
+  {
+    "objectID": "utils.html#guards",
+    "href": "utils.html#guards",
+    "title": "utils",
+    "section": "Guards",
+    "text": "Guards\n\nThis notebook was generated from _05_guards.ipynb)\n\n\nGuards\n\nNumpy and Pandas\n\nsource\n\n\n\nis_np\n\n is_np (arr_q:Union[list,pandas.core.series.Series,numpy.ndarray,Iterable[\n        numbers.Number],Any,List[int],List[Union[bool,numpy.bool_,Literal[\n        0],Literal[1]]],pandas.core.indexes.base.Index])\n\nChecks whether or not arr_q is a ndarray\n\n\n\n\nType\nDetails\n\n\n\n\narr_q\nUnion\nobject to check whether or not it is a SeriesLike.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_series_like\n\n is_series_like (series_q:Union[list,pandas.core.series.Series,numpy.ndarr\n                 ay,Iterable[numbers.Number],Any,List[int],List[Union[bool\n                 ,numpy.bool_,Literal[0],Literal[1]]],pandas.core.indexes.\n                 base.Index])\n\nChecks whether or not series_q is SeriesLike i.e. something that is probably data.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\nseries_q\nUnion\nobject to check whether or not it is a SeriesLike.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_series\n\n is_series (arr:Union[list,pandas.core.series.Series,numpy.ndarray,Iterabl\n            e[numbers.Number],Any,List[int],List[Union[bool,numpy.bool_,Li\n            teral[0],Literal[1]]],pandas.core.indexes.base.Index])\n\nChecks whether or not arr is a pd.Series\n\n\n\n\nType\nDetails\n\n\n\n\narr\nUnion\nobject to check whether or not it is a pd.Series.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nundo_npmatrix\n\n undo_npmatrix (arr:Union[list,pandas.core.series.Series,numpy.ndarray,Ite\n                rable[numbers.Number],Any,List[int],List[Union[bool,numpy.\n                bool_,Literal[0],Literal[1]]],pandas.core.indexes.base.Ind\n                ex])\n\nGiven a tensor converts it to a numpy array\n\n\n\n\nType\nDetails\n\n\n\n\narr\nUnion\n\n\n\nReturns\nUnion\n\n\n\n\n\nsource\n\n\nis_matrix\n\n is_matrix (arr:Union[list,pandas.core.series.Series,numpy.ndarray,Iterabl\n            e[numbers.Number],Any,List[int],List[Union[bool,numpy.bool_,Li\n            teral[0],Literal[1]]],pandas.core.indexes.base.Index])\n\nChecks whether or not arr is a np.matrix\n\n\n\n\nType\nDetails\n\n\n\n\narr\nUnion\nobject to check whether or not it is a np.matrix.\n\n\nReturns\nbool\n\n\n\n\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section See Also\n  else: warn(msg)\n\nsource\n\n\nis_torch\n\n is_torch (tensor_q:Union[list,pandas.core.series.Series,numpy.ndarray,Ite\n           rable[numbers.Number],Any,List[int],List[Union[bool,numpy.bool_\n           ,Literal[0],Literal[1]]],pandas.core.indexes.base.Index])\n\nAlias for is_tensor.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ntensor_q\nUnion\nobject to check whether or not it is a pytorch tensor\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_tensor\n\n is_tensor (tensor_q:Union[list,pandas.core.series.Series,numpy.ndarray,It\n            erable[numbers.Number],Any,List[int],List[Union[bool,numpy.boo\n            l_,Literal[0],Literal[1]]],pandas.core.indexes.base.Index])\n\nChecks whether or not tensor_q is a pytorch tensor\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ntensor_q\nUnion\nobject to check whether or not it is a pytorch tensor\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_mps\n\n is_mps (tensor:Union[Iterable[numbers.Number],Any])\n\nChecks whether or not tensor is on cpu\n\n\n\n\nType\nDetails\n\n\n\n\ntensor\nUnion\nobject to check whether or not it is on cpu.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_cpu\n\n is_cpu (tensor:Union[Iterable[numbers.Number],Any])\n\nChecks whether or not tensor is on cpu\n\n\n\n\nType\nDetails\n\n\n\n\ntensor\nUnion\nobject to check whether or not it is on cpu.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nis_device\n\n is_device (device_q:Union[str,NoneType,Any])\n\nChecks whether or not device_q is a valid pytorch device type.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ndevice_q\nUnion\nobject to check whether or not it is a pytorch device.\n\n\nReturns\nbool\n\n\n\n\n\nsource\n\n\nto_ndarray\n\n to_ndarray (arr)\n\n\nsource\n\n\nundo_sparse\n\n undo_sparse (arr:Union[list,pandas.core.series.Series,numpy.ndarray,Itera\n              ble[numbers.Number],Any,List[int],List[Union[bool,numpy.bool\n              _,Literal[0],Literal[1]]],pandas.core.indexes.base.Index])\n\nGiven a arr tries to make it a dense array\n\n\n\n\nType\nDetails\n\n\n\n\narr\nUnion\n\n\n\nReturns\nUnion"
+  },
+  {
+    "objectID": "utils.html#torch-utils",
+    "href": "utils.html#torch-utils",
+    "title": "utils",
+    "section": "Torch utils",
+    "text": "Torch utils\n\nThis notebook was generated from _06_torch_utils.ipynb)\n\n\nTorch Utils"
+  },
+  {
+    "objectID": "utils.html#adata",
+    "href": "utils.html#adata",
+    "title": "utils",
+    "section": "Adata",
+    "text": "Adata\n\nThis notebook was generated from _07_adata.ipynb)\n\n\nAdata\n\nsource\n\n\nAdataExtractor\n\n AdataExtractor (adata:Any, layer:Optional[str]='X_magic',\n                 x_emb:Optional[str]='X_phate',\n                 dim_str:Optional[str]=None, use_hvg:Optional[bool]=True)"
+  },
+  {
+    "objectID": "utils.html#ex",
+    "href": "utils.html#ex",
+    "title": "utils",
+    "section": "Ex",
+    "text": "Ex\n\nThis notebook was generated from _09_exp.ipynb)\n\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Arguments:\n  else: warn(msg)\n\nsource\n\nfind_exps\n\n find_exps (path, params)\n\n\nsource\n\n\nis_config_subset\n\n is_config_subset (truth, params)\n\n\nsource\n\n\nsetup_exp\n\n setup_exp (path, params, name=None)\n\n\nsource\n\n\nsave_exp_params\n\n save_exp_params (path, params, logger=None)\n\n\nsource\n\n\nload_exp_params\n\n load_exp_params (path)\n\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: potentially wrong underline length... \nReturns: \n---------- in \nReturns:\n----------...\n  else: warn(msg)\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Returns:\n  else: warn(msg)\n\nsource\n\n\ngen_exp_name\n\n gen_exp_name (name=None)\n\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: potentially wrong underline length... \nNotes: \n---------- in \nNotes:\n----------...\n  else: warn(msg)\n/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Notes:\n  else: warn(msg)\n\nsource\n\n\nlist_exps\n\n list_exps (path)\n\n\nsource\n\n\nexp_param_filename\n\n exp_param_filename (path)\n\n\nsource\n\n\nexp_log_filename\n\n exp_log_filename (path)\n\n\nsource\n\n\nconfig_exp_logger\n\n config_exp_logger (path)"
+  },
+  {
+    "objectID": "utils.html#archive",
+    "href": "utils.html#archive",
+    "title": "utils",
+    "section": "Archive",
+    "text": "Archive\n\nThis notebook was generated from _10_archive.ipynb)\n\n\nDirectory Viewer\n\nArchive Downloader\n\nDirectory defined in _02_utils/_03_directory.ipynb\nConsoleType defined in _02_utils/_03_directory.ipynb\nget_console imported in _02_utils/_03_directory.ipynb\nis_rich_available defined in _02_utils/_08_archive.ipynb\nurljoin defined in _02_utils/_01_files.ipynb\nparse_url imported in _02_utils/_01_files.ipynb\n\n\nsource\n\n\n\nArchiveDownloader\n\n ArchiveDownloader (rootdir:str, archive:str,\n                    entries:Union[str,list[str]], savedir:str,\n                    extract:bool=False, cleanup:bool=False,\n                    compound_archive:bool=False,\n                    archives:Optional[list[str]]=None,\n                    console:Optional[rich.console.Console]=None,\n                    progress:Optional[rich.progress.Progress]=None)\n\n\nExample\n\nfrom iza.static import AMAZON_BUCKET_FLUENTBIO\n\ndownloader = ArchiveDownloader(\n    rootdir = AMAZON_BUCKET_FLUENTBIO,\n    archive = 'public-datasets/pbmc/',\n    entries = ['combined.html', 'filtered_matrix.tar.gz'],\n    savedir = '~/Downloads/fluent_bio',  extract=True, cleanup=True\n)\ndownloader.execute()\n\n\n\nTyper"
+  },
+  {
+    "objectID": "commands.html",
+    "href": "commands.html",
+    "title": "Commands",
+    "section": "",
+    "text": "source\n\ncallback\n\n callback ()\n\nAggregate the notebooks in the directory.\n\nsource\n\n\naggregate_notebooks\n\n aggregate_notebooks (path:typing.Annotated[str,&lt;typer.models.OptionInfoob\n                      jectat0x7fba2db3b690&gt;], module:Annotated[Optional[st\n                      r],&lt;typer.models.OptionInfoobjectat0x7fba2db3b190&gt;]=\n                      None, output:Annotated[Optional[str],&lt;typer.models.O\n                      ptionInfoobjectat0x7fba2db3b910&gt;]=None, ignore:Annot\n                      ated[Optional[List[str]],&lt;typer.models.OptionInfoobj\n                      ectat0x7fba2db1ca10&gt;]=[], prefix:Annotated[Optional[\n                      bool],&lt;typer.models.OptionInfoobjectat0x7fba2db1ca50\n                      &gt;]=True)\n\n\nimport os\naggregate_notebooks(os.path.abspath(os.path.join('./_utils')), module='utils')\n\n\n\n\nAggregated notebook saved to /Users/solst/Projects/iza/nbs/02_utils.ipynb"
+  },
+  {
+    "objectID": "nbs.html",
+    "href": "nbs.html",
+    "title": "Notebooks",
+    "section": "",
+    "text": "%load_ext autoreload %autoreload 2"
+  },
+  {
+    "objectID": "nbs.html#jupter-notebooks",
+    "href": "nbs.html#jupter-notebooks",
+    "title": "Notebooks",
+    "section": "Jupter-Notebooks",
+    "text": "Jupter-Notebooks\nfrom Jupyter Notebooks readthedocs.\n\nImports\n\n\nUtility for finding notebook files\n\nsource\n\n\nfind_notebook\n\n find_notebook (fullname:str, path:Optional[str]=None)\n\nfind a notebook, given its fully qualified name and an optional path\nThis turns “foo.bar” into “foo/bar.ipynb” and tries turning “Foo_Bar” into “Foo Bar” if Foo_Bar does not exist.\n\n\nNotebook Loader\n\nsource\n\n\nNotebookLoader\n\n NotebookLoader (path:Optional[str]=None)\n\nModule Loader for Jupyter Notebooks\n\n\nModule Finder\n\nsource\n\n\nNotebookFinder\n\n NotebookFinder ()\n\nModule finder that locates Jupyter Notebooks\n\n\nHow to Register the Hook\n\n# sys.meta_path.append(NotebookFinder())\n\n\n\nDisplaying Notebooks\n\nsource\n\n\nNotebookViewer\n\n NotebookViewer (path:Optional[str]=None)\n\n\nExample\n\n# nbv = NotebookViewer(os.path.abspath(os.path.join(\"./_constants\", \"00_init.ipynb\")))\n# nbv.show_notebook()"
+  },
+  {
+    "objectID": "nbs.html#aggregation-script",
+    "href": "nbs.html#aggregation-script",
+    "title": "Notebooks",
+    "section": "Aggregation Script",
+    "text": "Aggregation Script\n\nsource\n\nNotebookPrefixer\n\n NotebookPrefixer (path:Optional[str]=None, name:Optional[str]=None,\n                   maximal:Optional[bool]=False)\n\n\nNotebookPrefixer(\n    os.path.dirname(os.path.abspath(os.path.join('./_utils'))), \n    name='utils'\n).next_nb_prefix()\n\n'02'\n\n\n\nsource\n\n\nNotebookAggregator\n\n NotebookAggregator (path:str, module:Optional[str]=None,\n                     output:Optional[str]=None,\n                     ignore:List[str]=&lt;factory&gt;,\n                     prefix:Union[bool,str,NoneType]=True,\n                     prefix_dir:Optional[str]=None)\n\nA class to aggregate Jupyter notebooks.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npath\nstr\n\nThe path to the directory containing the notebooks.\n\n\nmodule\nOptional\nNone\nThe name of the module, by default None\n\n\noutput\nOptional\nNone\nThe path to the output notebook, by default None\n\n\nignore\nList\n\nA list of notebooks to ignore, by default []\n\n\nprefix\nUnion\nTrue\n\n\n\nprefix_dir\nOptional\nNone\n\n\n\n\n\nnbagg = NotebookAggregator(\n    os.path.abspath(os.path.join('./_01_static')),\n    module='static',\n    ignore=['_00_init.ipynb']\n)\n\n\nnbagg.aggregate()\n\n\n\n\n\nnbagg = NotebookAggregator(\n    os.path.abspath(os.path.join('./_02_utils')),\n    module='utils',\n)\n\nnbagg.aggregate()\n\n\n\n\n\nnbagg = NotebookAggregator(\n    os.path.abspath(os.path.join('./_03_types')),\n    module='types',\n)\nnbagg.aggregate()"
+  },
+  {
+    "objectID": "nbs.html#jupyter-notebook-logger",
+    "href": "nbs.html#jupyter-notebook-logger",
+    "title": "Notebooks",
+    "section": "Jupyter-Notebook Logger",
+    "text": "Jupyter-Notebook Logger\n\nsource\n\nNotebookLogger\n\n NotebookLogger (name:Optional[str]='NotebookLogger',\n                 level:Optional[int]=20, format:Optional[str]='%(asctime)s\n                 - %(levelname)s - %(message)s')"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "iza",
+    "section": "",
+    "text": "# create conda environment\n$ mamba env create -f env.yml\n\n# update conda environment\n$ mamba env update -n iza --file env.yml\n\n\n\npip install -e .\n\n# install from pypi\npip install iza\n\n\n\n# activate conda environment\n$ conda activate iza\n\n# make sure the iza package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to the iza package\n$ nbdev_prepare\n\n\n\n# publish to pypi\n$ nbdev_pypi\n\n# publish to conda\n$ nbdev_conda --build_args '-c conda-forge'\n$ nbdev_conda --mambabuild --build_args '-c conda-forge -c dsm-72'"
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "iza",
+    "section": "",
+    "text": "# create conda environment\n$ mamba env create -f env.yml\n\n# update conda environment\n$ mamba env update -n iza --file env.yml\n\n\n\npip install -e .\n\n# install from pypi\npip install iza\n\n\n\n# activate conda environment\n$ conda activate iza\n\n# make sure the iza package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to the iza package\n$ nbdev_prepare\n\n\n\n# publish to pypi\n$ nbdev_pypi\n\n# publish to conda\n$ nbdev_conda --build_args '-c conda-forge'\n$ nbdev_conda --mambabuild --build_args '-c conda-forge -c dsm-72'"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "iza",
+    "section": "Installation",
+    "text": "Installation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/dsm-72/iza.git\nor from conda\n$ conda install -c dsm-72 iza\nor from pypi\n$ pip install iza"
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "iza",
+    "section": "Documentation",
+    "text": "Documentation\nDocumentation can be found hosted on GitHub repository pages. Additionally you can find package manager specific guidelines on conda and pypi respectively."
+  },
+  {
+    "objectID": "imp.html",
+    "href": "imp.html",
+    "title": "Imp",
+    "section": "",
+    "text": "Use ipos to make sure submodules are accessible without dependencies"
+  },
+  {
+    "objectID": "imp.html#ipos",
+    "href": "imp.html#ipos",
+    "title": "Imp",
+    "section": "",
+    "text": "Use ipos to make sure submodules are accessible without dependencies"
+  },
+  {
+    "objectID": "imp.html#imps",
+    "href": "imp.html#imps",
+    "title": "Imp",
+    "section": "Imps",
+    "text": "Imps\n\nsource\n\nSCPrepImp\n\n SCPrepImp (name:str='scprep', nick:Optional[str]=None,\n            subspecs:Optional[List[ForwardRef('ImpSubSpec')]]=&lt;factory&gt;,\n            fallbacks:Optional[Dict[str,Any]]=&lt;factory&gt;,\n            lazy:Optional[bool]=True, delay:Optional[bool]=False,\n            namespace:Dict[str,Any]=&lt;factory&gt;,\n            _squash_name_errors:Optional[bool]=True,\n            _reload:Optional[bool]=False)\n\n\nsource\n\n\nScanPyImp\n\n ScanPyImp (name:str='scanpy', nick:str='sc',\n            subspecs:Optional[List[ForwardRef('ImpSubSpec')]]=&lt;factory&gt;,\n            fallbacks:Optional[Dict[str,Any]]=&lt;factory&gt;,\n            lazy:Optional[bool]=True, delay:Optional[bool]=False,\n            namespace:Dict[str,Any]=&lt;factory&gt;,\n            _squash_name_errors:Optional[bool]=True,\n            _reload:Optional[bool]=False)\n\n\nsource\n\n\nRichImp\n\n RichImp (namespace:Dict[str,Any]=&lt;factory&gt;, name:str='rich',\n          nick:Optional[str]=None,\n          subspecs:Optional[List[ForwardRef('ImpSubSpec')]]=&lt;factory&gt;,\n          fallbacks:Optional[Dict[str,Any]]=&lt;factory&gt;, lazy:bool=False,\n          delay:Optional[bool]=False,\n          _squash_name_errors:Optional[bool]=True,\n          _reload:Optional[bool]=False)\n\n\nsource\n\n\nTqdmImp\n\n TqdmImp (name:str='tqdm', nick:Optional[str]=None,\n          subspecs:Optional[List[ForwardRef('ImpSubSpec')]]=&lt;factory&gt;,\n          fallbacks:Optional[Dict[str,Any]]=&lt;factory&gt;,\n          lazy:Optional[bool]=True, delay:Optional[bool]=False,\n          namespace:Dict[str,Any]=&lt;factory&gt;,\n          _squash_name_errors:Optional[bool]=True,\n          _reload:Optional[bool]=False)\n\n\nsource\n\n\nTorchImp\n\n TorchImp (name:str='torch', nick:Optional[str]=None,\n           subspecs:Optional[List[ForwardRef('ImpSubSpec')]]=&lt;factory&gt;,\n           fallbacks:Optional[Dict[str,Any]]=&lt;factory&gt;, lazy:bool=False,\n           delay:Optional[bool]=False, namespace:Dict[str,Any]=&lt;factory&gt;,\n           _squash_name_errors:Optional[bool]=True,\n           _reload:Optional[bool]=False)"
+  },
+  {
+    "objectID": "imp.html#check-modules-for-availbility",
+    "href": "imp.html#check-modules-for-availbility",
+    "title": "Imp",
+    "section": "Check Modules for Availbility",
+    "text": "Check Modules for Availbility\n\nsource\n\nis_anndata_available\n\n is_anndata_available ()\n\n\nsource\n\n\nis_pytorch_available\n\n is_pytorch_available ()\n\n\nsource\n\n\nis_rich_available\n\n is_rich_available ()"
+  },
+  {
+    "objectID": "plots.html",
+    "href": "plots.html",
+    "title": "Plots",
+    "section": "",
+    "text": "%load_ext autoreload %autoreload 2\n\nsource\n\nmake_categorical_legend\n\n make_categorical_legend (values:List[str],\n                          cmap:Optional[matplotlib.colors.Colormap],\n                          **kwargs)\n\n\nsource\n\n\nconvert_cmap_to_categorical\n\n convert_cmap_to_categorical (values:List[str],\n                              cmap:Optional[matplotlib.colors.Colormap])\n\n\nsource\n\n\nmpl_cat_val\n\n mpl_cat_val (i:int, n:int)\n\n\nsource\n\n\nmpl_cur_cmap\n\n mpl_cur_cmap (cmap:Optional[matplotlib.colors.Colormap]=None)\n\n\nsource\n\n\nsetup_grid_figure\n\n setup_grid_figure (ncols:Optional[int]=1, nrows:Optional[int]=1,\n                    figsize:Optional[Tuple[int,int]]=(12, 8),\n                    dpi:Optional[int]=300, hspace:Optional[float]=0.3,\n                    wspace:Optional[float]=None,\n                    frameon:Optional[bool]=False, **kwargs)\n\n\nsource\n\n\nscale_figsize_for_grid\n\n scale_figsize_for_grid (figsize:Optional[Tuple[int,int]]=(12, 8),\n                         n_cols:Optional[int]=1, n_rows:Optional[int]=1)\n\n\nsource\n\n\nset_rc_params\n\n set_rc_params (params:Optional[dict]=None)\n\n\nsource\n\n\ntriple_scatter\n\n triple_scatter (data:numpy.ndarray, ax:matplotlib.axes._axes.Axes,\n                 c:Union[List[str],List[float]], s:List[float],\n                 cmap:Optional[matplotlib.colors.Colormap]=None,\n                 alpha:float=1, marker:str='.', point_size:float=300,\n                 hide_axes:bool=True, frameon:bool=False)\n\n\nsource\n\n\nhide_axes\n\n hide_axes (ax:matplotlib.axes._axes.Axes)"
+  },
+  {
+    "objectID": "static.html",
+    "href": "static.html",
+    "title": "static",
+    "section": "",
+    "text": "This notebook was generated from _01_paths.ipynb)"
+  },
+  {
+    "objectID": "static.html#paths",
+    "href": "static.html#paths",
+    "title": "static",
+    "section": "",
+    "text": "This notebook was generated from _01_paths.ipynb)"
+  },
+  {
+    "objectID": "static.html#files",
+    "href": "static.html#files",
+    "title": "static",
+    "section": "Files",
+    "text": "Files\n\nThis notebook was generated from _02_files.ipynb)"
+  },
+  {
+    "objectID": "static.html#extensions",
+    "href": "static.html#extensions",
+    "title": "static",
+    "section": "Extensions",
+    "text": "Extensions"
+  },
+  {
+    "objectID": "static.html#names",
+    "href": "static.html#names",
+    "title": "static",
+    "section": "Names",
+    "text": "Names\n\nThis notebook was generated from _03_names.ipynb)"
+  },
+  {
+    "objectID": "static.html#literals",
+    "href": "static.html#literals",
+    "title": "static",
+    "section": "Literals",
+    "text": "Literals\n\nDataFrame Columns"
+  },
+  {
+    "objectID": "static.html#adata",
+    "href": "static.html#adata",
+    "title": "static",
+    "section": "Adata",
+    "text": "Adata\n\nThis notebook was generated from _04_adata.ipynb)"
+  },
+  {
+    "objectID": "static.html#literals-1",
+    "href": "static.html#literals-1",
+    "title": "static",
+    "section": "Literals",
+    "text": "Literals\n\nMetaData\n\n\nEmbeddings\n\n\nDataFrame Columns\n\n\nAdata\n\n\nFiles and Dirs\n\n\nFluentBio"
+  },
+  {
+    "objectID": "static.html#ivanova",
+    "href": "static.html#ivanova",
+    "title": "static",
+    "section": "Ivanova",
+    "text": "Ivanova\n\nThis notebook was generated from _05_ivanova.ipynb)\n\n\nLineages\n\n\nMarkers\n\n\nCombined"
+  },
+  {
+    "objectID": "static.html#plots",
+    "href": "static.html#plots",
+    "title": "static",
+    "section": "Plots",
+    "text": "Plots\n\nThis notebook was generated from _06_plots.ipynb)\n\n\nDefault Params for MatPlotLib"
+  },
+  {
+    "objectID": "static.html#pipseq",
+    "href": "static.html#pipseq",
+    "title": "static",
+    "section": "Pipseq",
+    "text": "Pipseq\n\nThis notebook was generated from _07_pipseq.ipynb)"
+  },
+  {
+    "objectID": "static.html#literals-2",
+    "href": "static.html#literals-2",
+    "title": "static",
+    "section": "Literals",
+    "text": "Literals\n\nPIPSeq"
+  },
+  {
+    "objectID": "types.html",
+    "href": "types.html",
+    "title": "types",
+    "section": "",
+    "text": "This notebook was generated from _00_aliases.ipynb)"
+  },
+  {
+    "objectID": "types.html#aliases",
+    "href": "types.html#aliases",
+    "title": "types",
+    "section": "",
+    "text": "This notebook was generated from _00_aliases.ipynb)"
+  },
+  {
+    "objectID": "types.html#simple-aliases",
+    "href": "types.html#simple-aliases",
+    "title": "types",
+    "section": "Simple Aliases",
+    "text": "Simple Aliases\nMake sure we do not depend on PyTorch\nMake sure we do not depend on AnnData"
+  },
+  {
+    "objectID": "types.html#dataset-splits",
+    "href": "types.html#dataset-splits",
+    "title": "types",
+    "section": "Dataset splits",
+    "text": "Dataset splits\n\nThis notebook was generated from _01_dataset_splits.ipynb)\n\n\nDataset Splits\n\nsource\n\n\nTrainValidTestSplit\n\n TrainValidTestSplit (train:int, valid:int, test:int)\n\n\nsource\n\n\nTrainTestSplit\n\n TrainTestSplit (train:int, test:int)\n\n\nsource\n\n\nTrainValidSplit\n\n TrainValidSplit (train:int, valid:int)"
+  },
+  {
+    "objectID": "types.html#plots",
+    "href": "types.html#plots",
+    "title": "types",
+    "section": "Plots",
+    "text": "Plots\n\nThis notebook was generated from _03_plots.ipynb)"
+  },
+  {
+    "objectID": "types.html#director",
+    "href": "types.html#director",
+    "title": "types",
+    "section": "Director",
+    "text": "Director\n\nThis notebook was generated from _04_directory.ipynb)\n\n\nsource\n\nDirectoryTreeStrings\n\n DirectoryTreeStrings (value, names=None, module=None, qualname=None,\n                       type=None, start=1, boundary=None)\n\nEnum where members are also (and must be) strings"
+  },
+  {
+    "objectID": "types.html#rich",
+    "href": "types.html#rich",
+    "title": "types",
+    "section": "Rich",
+    "text": "Rich\n\nThis notebook was generated from _05_rich.ipynb)"
+  },
+  {
+    "objectID": "rich.html",
+    "href": "rich.html",
+    "title": "Rich",
+    "section": "",
+    "text": "source\n\ncprint\n\n cprint (style:str, text:str)\n\n\nsource\n\n\nswrap\n\n swrap (style:str, text:str)"
+  }
+]
