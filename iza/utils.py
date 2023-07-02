@@ -2,19 +2,19 @@
 
 # %% auto 0
 __all__ = ['DecompressFunc', 'isiter', 'allinstance', 'allsametype', 'isin', 'arein', 'str_just_alpha', 'str_just_numeric',
-           'strip_punc', 'filter_kwargs_for_func', 'filter_kwargs_for_class', 'wrangle_kwargs_for_func',
-           'wrangle_kwargs_for_class', 'copy_to_clipboard', 'is_pathlib', 'is_pathlike', 'is_path', 'str_to_path',
-           'path_to_str', 'to_abs_expanded', 'sort_file_first', 'sort_directory_first', 'get_user', 'collapse_user',
-           'check_ext', 'drop_ext', 'is_tar', 'is_gz', 'is_targz', 'is_tarball', 'filter_for_gz_files',
-           'get_gz_files_in_dir', 'decompress_tarball', 'decompress_gunzip', 'undo_gz', 'RecursiveDecompressor',
-           'make_missing_dirs', 'dir_dirs', 'decompress_directory_of_gunzipped_files',
-           'decompress_tarball_of_gunzipped_files', 'stream_file', 'download_and_decompress_tarball_of_gunzipped_files',
-           'make_temp_file', 'urljoin', 'Slice', 'base_init_tree', 'rich_init_tree', 'init_tree', 'base_entry_fn',
-           'rich_entry_fn', 'entry_fn', 'walk_dir_tree', 'DirectoryTree', 'RichDirectory', 'Directory', 'is_matrix',
-           'undo_npmatrix', 'is_series', 'is_series_like', 'is_np', 'is_device', 'is_cpu', 'is_mps', 'is_tensor',
-           'is_torch', 'undo_sparse', 'to_ndarray', 'AdataExtractor', 'config_exp_logger', 'exp_log_filename',
-           'exp_param_filename', 'list_exps', 'gen_exp_name', 'load_exp_params', 'save_exp_params', 'setup_exp',
-           'is_config_subset', 'find_exps', 'ArchiveDownloader']
+           'strip_punc', 'str_split_get', 'str_part_pre', 'str_part_mid', 'str_part_end', 'filter_kwargs_for_func',
+           'filter_kwargs_for_class', 'wrangle_kwargs_for_func', 'wrangle_kwargs_for_class', 'get_func_params',
+           'copy_to_clipboard', 'is_pathlib', 'is_pathlike', 'is_path', 'str_to_path', 'path_to_str', 'to_abs_expanded',
+           'sort_file_first', 'sort_directory_first', 'get_user', 'collapse_user', 'check_ext', 'drop_ext', 'is_tar',
+           'is_gz', 'is_targz', 'is_tarball', 'filter_for_gz_files', 'get_gz_files_in_dir', 'decompress_tarball',
+           'decompress_gunzip', 'undo_gz', 'RecursiveDecompressor', 'make_missing_dirs', 'dir_dirs',
+           'decompress_directory_of_gunzipped_files', 'decompress_tarball_of_gunzipped_files', 'stream_file',
+           'download_and_decompress_tarball_of_gunzipped_files', 'make_temp_file', 'urljoin', 'Slice', 'base_init_tree',
+           'rich_init_tree', 'init_tree', 'base_entry_fn', 'rich_entry_fn', 'entry_fn', 'walk_dir_tree',
+           'DirectoryTree', 'RichDirectory', 'Directory', 'is_matrix', 'undo_npmatrix', 'is_series', 'is_series_like',
+           'is_np', 'is_device', 'is_cpu', 'is_mps', 'is_tensor', 'is_torch', 'undo_sparse', 'to_ndarray',
+           'AdataExtractor', 'config_exp_logger', 'exp_log_filename', 'exp_param_filename', 'list_exps', 'gen_exp_name',
+           'load_exp_params', 'save_exp_params', 'setup_exp', 'is_config_subset', 'find_exps', 'ArchiveDownloader']
 
 # %% ../nbs/02_utils.ipynb 5
 import os, inspect, string
@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 
 import numpy as np, pandas as pd
 
-from typing import List, Any, Optional, Callable, Union, Tuple, Iterable, Set, TypeAlias, Type
+from typing import List, Any, Optional, Callable, Union, Tuple, Iterable, Set, TypeAlias, Type, Dict
 
 # %% ../nbs/02_utils.ipynb 7
 def isiter(val: Any) -> bool:    
@@ -43,16 +43,32 @@ def arein(vals:Iterable, refs:Iterable) -> bool:
     return isiter(vals) and isiter(refs) and all(isin(v, refs) for v in vals)
 
 # %% ../nbs/02_utils.ipynb 8
-def str_just_alpha(s:str) -> str:
+def str_just_alpha(s: str) -> str:
     '''Filters a string for just alpha values'''
     return ''.join(list(filter(str.isalpha, s)))
 
-def str_just_numeric(s:str) -> str:
+def str_just_numeric(s: str) -> str:
     '''Filters a string for just numeric values'''
     return ''.join(list(filter(str.isnumeric, s)))
 
-def strip_punc(s:str) -> str:
+def strip_punc(s: str) -> str:
     return s.translate(str.maketrans('', '', string.punctuation))
+
+def str_split_get(s: str, sep: str = '_', idx: int = 0) -> str:
+    parts = s.split(sep)
+    return parts[idx]    
+
+def str_part_pre(s:str, sep: Optional[str] = ' ') -> str:
+    pre, mid, end = s.partition(sep)
+    return pre
+
+def str_part_mid(s:str, sep: Optional[str] = ' ') -> str:
+    pre, mid, end = s.partition(sep)
+    return mid
+
+def str_part_end(s:str, sep: Optional[str] = ' ') -> str:
+    pre, mid, end = s.partition(sep)
+    return end
 
 # %% ../nbs/02_utils.ipynb 10
 def filter_kwargs_for_func(fn: Callable, **kwargs:Optional[dict]):
@@ -87,6 +103,30 @@ def wrangle_kwargs_for_class(
     params.update(kwargs or {})
     # filter for only the params that other class accepts
     params = filter_kwargs_for_class(cls, **params)
+    return params
+
+def get_func_params(
+    fn: Callable, 
+    drop_self: Optional[bool] = True,
+    drop_before: Optional[int] = 0,
+    drop_idxs: Optional[List[int]] = list(),
+    drop_names: Optional[List[str]] = list(),
+    drop_after: Optional[int] = None,
+) -> Dict[str, Any]:
+    params = inspect.signature(fn).parameters
+    params = {k: v.default for k, v in params.items()}
+    if drop_self and 'self' in params: 
+        params.pop('self')
+
+    params = {
+        n: p for i, (n, p) in enumerate(params.items()) 
+        if (
+            # is before <= i < after
+            (drop_before <= i or (drop_after is not None and i < drop_after))
+            # i not in drop_idxs and n not in drop_names
+            and (i not in drop_idxs and n not in drop_names)
+        )
+    }  
     return params
 
 # %% ../nbs/02_utils.ipynb 11
@@ -697,6 +737,8 @@ class DirectoryTree:
     hidden: Optional[bool] = False
     entry_fn: Optional[TreeEntryFunc] = field(default=entry_fn)
     tree: Optional[RichTree] = field(init=False, default=None)
+
+    coerce_str: ClassVar[Optional[bool]] = field(init=False, default=True, repr=False)
     
     def __post_init__(self):
         # NOTE: defined in _02_utils/_01_files.ipynb
@@ -712,7 +754,10 @@ class DirectoryTree:
         
     def get_tree_lines(self) -> List[str]:        
         tree_gen = self.tree_generator()
-        lines = [line for line in tree_gen]
+        lines = [
+            str(line) if self.coerce_str else line 
+            for line in tree_gen
+        ]
         return lines
     
     def make_tree_str(self) -> str:        
@@ -721,12 +766,12 @@ class DirectoryTree:
         return tree_str
    
     def print(self) -> None:        
-        tree_str = self.make_tree_str()        
+        tree_str = self.make_tree_str()
         print(tree_str)
         return
 
     def __repr__(self):        
-        tree_str = self.make_tree_str()        
+        tree_str = self.make_tree_str()
         return tree_str  
 
 # %% ../nbs/02_utils.ipynb 57
@@ -735,6 +780,9 @@ class RichDirectory(DirectoryTree):
     _: KW_ONLY
     console: Optional[RichConsole] = field(default_factory=Console, init=True, repr=False)    
     _imp: Imp = field(default_factory=RichImp, init=False, repr=False)
+    
+    coerce_str: ClassVar[Optional[bool]] = field(init=False, default=False, repr=False)
+
     def __post_init__(self):
         super().__post_init__()
         self._imp = RichImp()
@@ -743,7 +791,7 @@ class RichDirectory(DirectoryTree):
             self.console = get_console()
 
     def print_rich(self) -> None:    
-        lines = self.get_tree_lines()
+        lines = self.get_tree_lines(_coerce_str=False)
         self.console.print(self.tree)
 
 # %% ../nbs/02_utils.ipynb 58
